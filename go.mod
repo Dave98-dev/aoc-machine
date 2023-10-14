@@ -1,3 +1,3 @@
-module example.com/m
+module aocmachine
 
 go 1.19

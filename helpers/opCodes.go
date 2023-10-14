@@ -1,4 +1,4 @@
-package main
+package helpers
 
 func addr(memory [4]int, A, B, C int) [4]int {
 	outputMemory := memory

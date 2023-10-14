@@ -1,6 +1,8 @@
 package main
 
 import (
+	"aocmachine/helpers"
+	"aocmachine/model"
 	"strconv"
 	"strings"
 )
@@ -30,7 +32,7 @@ func convertOperationLine(line string) [4]int {
 
 func solvePartOne(part1 string) map[int][]int {
 
-	input := make([]machineInstructionExample, 0)
+	input := make([]model.MachineInstructionExample, 0)
 
 	part1Lines := strings.Split(part1, "\r\n")
 
@@ -39,18 +41,18 @@ func solvePartOne(part1 string) map[int][]int {
 			break
 		}
 
-		inputRow := machineInstructionExample{
-			before:    convertMemoryLine(part1Lines[i]),
-			operation: convertOperationLine(part1Lines[i+1]),
-			after:     convertMemoryLine(part1Lines[i+2]),
+		inputRow := model.MachineInstructionExample{
+			Before:    convertMemoryLine(part1Lines[i]),
+			Operation: convertOperationLine(part1Lines[i+1]),
+			After:     convertMemoryLine(part1Lines[i+2]),
 		}
 
 		input = append(input, inputRow)
 	}
 
-	m := mapOpCodes(input)
+	m := helpers.MapOpCodes(input)
 
-	println(countOpCodes(input))
+	println(helpers.CountOpCodes(input))
 
 	return m
 }

@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"aocmachine/helpers"
+	"strings"
+)
 
 func solvePartTwo(part2 string) [4]int {
 
@@ -14,7 +17,7 @@ func solvePartTwo(part2 string) [4]int {
 		}
 
 		operation := convertOperationLine(line)
-		memory = executeInstructionWithAlias(memory, operation)
+		memory = helpers.ExecuteInstructionWithAlias(memory, operation)
 	}
 
 	return memory

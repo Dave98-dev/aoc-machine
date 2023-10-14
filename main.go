@@ -15,7 +15,7 @@ func check(e error) {
 func UNUSED(x ...interface{}) {}
 
 func main() {
-	dat, err := os.ReadFile("./input.txt")
+	dat, err := os.ReadFile("./problem/input.txt")
 	check(err)
 
 	inputString := string(dat)

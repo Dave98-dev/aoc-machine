@@ -1,4 +1,4 @@
-package main
+package helpers
 
 func executeInstruction(memory [4]int, operation [4]int) [4]int {
 	opcode, A, B, C := operation[0], operation[1], operation[2], operation[3]
@@ -41,7 +41,7 @@ func executeInstruction(memory [4]int, operation [4]int) [4]int {
 
 }
 
-func executeInstructionWithAlias(memory [4]int, operation [4]int) [4]int {
+func ExecuteInstructionWithAlias(memory [4]int, operation [4]int) [4]int {
 	switch operation[0] {
 	case 0:
 		operation[0] = 2

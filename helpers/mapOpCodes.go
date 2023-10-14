@@ -1,20 +1,23 @@
-package main
+package helpers
 
-import "fmt"
+import (
+	model "aocmachine/model"
+	"fmt"
+)
 
-func mapOpCodes(example []machineInstructionExample) map[int]([]int) {
+func MapOpCodes(example []model.MachineInstructionExample) map[int]([]int) {
 	m := make(map[int]([]int))
 
 	for _, exampleRow := range example {
-		originalOpCode := exampleRow.operation[0]
+		originalOpCode := exampleRow.Operation[0]
 		val := m[originalOpCode]
 
 		possibilities := make([]int, 0)
 
 		for i := 0; i <= 15; i++ {
-			result := executeInstruction(exampleRow.before, [4]int{i, exampleRow.operation[1], exampleRow.operation[2], exampleRow.operation[3]})
+			result := executeInstruction(exampleRow.Before, [4]int{i, exampleRow.Operation[1], exampleRow.Operation[2], exampleRow.Operation[3]})
 
-			if result == exampleRow.after {
+			if result == exampleRow.After {
 				possibilities = append(possibilities, i)
 			}
 		}
@@ -22,9 +25,9 @@ func mapOpCodes(example []machineInstructionExample) map[int]([]int) {
 		unionRes := union(possibilities, val)
 
 		if len(unionRes) == 0 {
-			fmt.Println(exampleRow.before)
-			fmt.Println(exampleRow.operation)
-			fmt.Println(exampleRow.after)
+			fmt.Println(exampleRow.Before)
+			fmt.Println(exampleRow.Operation)
+			fmt.Println(exampleRow.After)
 			fmt.Println(possibilities)
 			fmt.Println(val)
 			fmt.Println(m)
@@ -37,16 +40,16 @@ func mapOpCodes(example []machineInstructionExample) map[int]([]int) {
 	return m
 }
 
-func countOpCodes(example []machineInstructionExample) int {
+func CountOpCodes(example []model.MachineInstructionExample) int {
 	finalCount := 0
 
 	for _, exampleRow := range example {
 		possibilities := 0
 
 		for i := 0; i <= 15; i++ {
-			result := executeInstruction(exampleRow.before, [4]int{i, exampleRow.operation[1], exampleRow.operation[2], exampleRow.operation[3]})
+			result := executeInstruction(exampleRow.Before, [4]int{i, exampleRow.Operation[1], exampleRow.Operation[2], exampleRow.Operation[3]})
 
-			if result == exampleRow.after {
+			if result == exampleRow.After {
 				possibilities++
 			}
 		}
