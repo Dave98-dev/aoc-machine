@@ -18,4 +18,7 @@
 ]
 
 per ottenere il risultato vero, escludo a mano gli elementi obbligati:
-ad esempio siccome 0 può essere solo 2 e 6 può essere o 2 o 15, 6 può essere solo 15
+ad esempio: 
+	0 può essere solo 2
+	6 può essere 2 o 15
+	quindi il 6 può essere solo 15
